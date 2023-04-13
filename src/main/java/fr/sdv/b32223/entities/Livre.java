@@ -21,15 +21,6 @@ public class Livre {
     public Livre() {
     }
 
-    @Override
-    public String toString() {
-        return "Livre{" +
-                "id=" + id +
-                ", titre='" + titre + '\'' +
-                ", auteur='" + auteur + '\'' +
-                '}';
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -52,5 +43,15 @@ public class Livre {
 
     public String getAuteur() {
         return auteur;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Livre{" +
+                "id=" + id +
+                ", titre='" + titre + '\'' +
+                ", auteur='" + auteur + '\'' +
+                '}';
     }
 }
