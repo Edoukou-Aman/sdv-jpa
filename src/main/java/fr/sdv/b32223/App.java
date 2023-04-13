@@ -14,12 +14,10 @@ public class App {
         // Affichage
         Livre liv = em.find(Livre.class,2);
         if (liv != null) {
-            //System.out.println(liv.toString());
+            System.out.println(liv.toString());
         }
 
         em.getTransaction().begin();
-
-/*
         //Ajout
         Livre livAjout = new Livre();
         livAjout.setAuteur("Kevin Aman");
@@ -29,12 +27,11 @@ public class App {
 
         //Modifier
         Livre livModif = em.find(Livre.class, 5);
-        //System.out.println(livModif.toString());
+        System.out.println(livModif.toString());
         livModif.setTitre("Du plaisir dans la cuisine");
         livModif.setAuteur("1001 recettes de Cuisine");
         em.persist(livModif);
 
-*/
 
        //Extraire en fonction de l'auteur
         List<Livre> livreAut = null;
@@ -46,36 +43,32 @@ public class App {
             System.out.println("Livre n°"+livre.getId()+" Titre : "+livre.getTitre()+", Auteur : "+ livre.getAuteur());
         }
 
-
-/*
         //Extraire en fonction du titre
         List<Livre> livreTit = null;
         livreTit = em
                 .createQuery("select t from Livre t where t.titre =:titre",Livre.class)
-                .setParameter("titre", "Jules Verne")
+                .setParameter("titre", "Du plaisir dans la cuisine")
                 .getResultList();
         for(Livre livre:livreTit) {
-            System.out.println(Livre n°"+livre.getId()+" Titre : "+livre.getTitre()+", Auteur : "+ livre.getAuteur());
+            System.out.println("Livre n°"+livre.getId()+" Titre : "+livre.getTitre()+", Auteur : "+ livre.getAuteur());
         }
-*/
+
+
         //Supprimer
-        //Livre livSupp = em.find(Livre.class, 6);
-        //em.remove(livSupp);
+        Livre livSupp = em.find(Livre.class, 8);
+        em.remove(livSupp);
 
 
-        /*
+
         //Tout afficher
         List<Livre> livreAff = null;
         livreAff = em.createNativeQuery("select * from Livre", Livre.class).getResultList();
         for(Livre livre:livreAff) {
             System.out.println("Livre n°"+livre.getId()+" Titre : "+livre.getTitre()+", Auteur : "+ livre.getAuteur());
         }
-        */
-
         em.getTransaction().commit();
 
-
-        //System.out.println(em);
+        System.out.println(em);
         em.close();
     }
 }
