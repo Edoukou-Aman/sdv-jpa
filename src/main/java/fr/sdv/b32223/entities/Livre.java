@@ -19,7 +19,6 @@ public class Livre {
 
     //constructeur
     public Livre() {
-
     }
 
     @Override
