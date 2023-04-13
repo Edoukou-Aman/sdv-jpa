@@ -13,9 +13,7 @@ public class App {
 
         // Affichage
         Livre liv = em.find(Livre.class,2);
-        if (liv != null) {
-            System.out.println(liv.toString());
-        }
+        if (liv != null) System.out.println(liv.toString());
 
         em.getTransaction().begin();
         //Ajout
@@ -34,7 +32,7 @@ public class App {
 
 
        //Extraire en fonction de l'auteur
-        List<Livre> livreAut = null;
+        List<Livre> livreAut;
         livreAut = em
                 .createQuery("select a from Livre a where a.auteur =:auteur",Livre.class)
                 .setParameter("auteur", "Léon Tolstoï")
@@ -44,7 +42,7 @@ public class App {
         }
 
         //Extraire en fonction du titre
-        List<Livre> livreTit = null;
+        List<Livre> livreTit;
         livreTit = em
                 .createQuery("select t from Livre t where t.titre =:titre",Livre.class)
                 .setParameter("titre", "Du plaisir dans la cuisine")
@@ -61,7 +59,7 @@ public class App {
 
 
         //Tout afficher
-        List<Livre> livreAff = null;
+        List<Livre> livreAff;
         livreAff = em.createNativeQuery("select * from Livre", Livre.class).getResultList();
         for(Livre livre:livreAff) {
             System.out.println("Livre n°"+livre.getId()+" Titre : "+livre.getTitre()+", Auteur : "+ livre.getAuteur());
