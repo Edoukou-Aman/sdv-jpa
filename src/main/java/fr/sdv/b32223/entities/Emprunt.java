@@ -8,6 +8,7 @@ public class Emprunt {
 
     }
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "DATE_DEBUT")
@@ -19,7 +20,8 @@ public class Emprunt {
     @Column(name = "DELAI")
     private int delai;
 
-    @Column(name = "ID_CLIENT")
+    @ManyToOne
+    @JoinColumn(name = "ID_CLIENT")
     private int id_client;
 
     public int getId() {
