@@ -13,7 +13,7 @@ public class App {
         // Affichage
         Livre liv = em.find(Livre.class,2);
         if (liv != null) {
-            System.out.println(liv.toString());
+            //System.out.println(liv.toString());
         }
 
         em.getTransaction().begin();
@@ -28,9 +28,10 @@ public class App {
 
         //Modifier
         Livre livModif = em.find(Livre.class, 5);
-        System.out.println(livModif.toString());
+        //System.out.println(livModif.toString());
         livModif.setTitre("Du plaisir dans la cuisine");
         livModif.setAuteur("1001 recettes de Cuisine");
+        em.persist(livModif);
 
 
         //Extraire en fonction du titre
@@ -40,13 +41,16 @@ public class App {
 
 
         //Supprimer
+        Livre livSupp = em.find(Livre.class, 6);
+        em.remove(livSupp);
 
 
         //Tout afficher
 
+
+
+
         em.getTransaction().commit();
-
-
 
 
         //System.out.println(em);
