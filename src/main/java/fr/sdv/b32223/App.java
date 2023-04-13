@@ -35,28 +35,42 @@ public class App {
         em.persist(livModif);
 
 */
-       /* //Extraire en fonction de l'auteur
-        String query = "SELECT liv FROM Livre liv WHERE liv.auteur=:auteur";
-        List<Livre> livres = em.createNamedQuery(query, Livre.class).setParameter("auteur", "Léon Tolstoï").getResultList();
-        for(Livre livre:livres) {
-            System.out.println(livre.getTitre()+", "+ livre.getAuteur());
+
+       //Extraire en fonction de l'auteur
+        List<Livre> livreAut = null;
+        livreAut = em
+                .createQuery("select a from Livre a where a.auteur =:auteur",Livre.class)
+                .setParameter("auteur", "Léon Tolstoï")
+                .getResultList();
+        for(Livre livre:livreAut) {
+            System.out.println("Livre n°"+livre.getId()+" Titre : "+livre.getTitre()+", Auteur : "+ livre.getAuteur());
+        }
+
+
+/*
+        //Extraire en fonction du titre
+        List<Livre> livreTit = null;
+        livreTit = em
+                .createQuery("select t from Livre t where t.titre =:titre",Livre.class)
+                .setParameter("titre", "Jules Verne")
+                .getResultList();
+        for(Livre livre:livreTit) {
+            System.out.println(Livre n°"+livre.getId()+" Titre : "+livre.getTitre()+", Auteur : "+ livre.getAuteur());
         }
 */
-
-        //Extraire en fonction du titre
-
-
         //Supprimer
         //Livre livSupp = em.find(Livre.class, 6);
         //em.remove(livSupp);
 
 
+        /*
         //Tout afficher
         List<Livre> livreAff = null;
         livreAff = em.createNativeQuery("select * from Livre", Livre.class).getResultList();
         for(Livre livre:livreAff) {
             System.out.println("Livre n°"+livre.getId()+" Titre : "+livre.getTitre()+", Auteur : "+ livre.getAuteur());
         }
+        */
 
         em.getTransaction().commit();
 
